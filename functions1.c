@@ -7,7 +7,7 @@
  * @r_buffer: r_buffer array handle print
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
- * @r_precision: specification r_precision
+ * @r_precision: specification r_precision 
  * @r_size: r_size specifier
  * Return:  characters Number printed .
  */
@@ -17,7 +17,7 @@ int r_print_unsigned(va_list r_types, char r_buffer[],
 	int r = BUFF_SIZE - 2;
 	unsigned long int r_num = va_arg(r_types, unsigned long int);
 
-	r_num = convert_size_unsgnd(r_num, r_size);
+	r_num = r_convert_size_unsgnd(r_num, r_size);
 
 	if (r_num == 0)
 		r_buffer[r--] = '0';
@@ -32,8 +32,7 @@ int r_print_unsigned(va_list r_types, char r_buffer[],
 
 	r++;
 
-	return (r_write_unsgnd(0, r, r_buffer,
-				r_flags, r_width, r_precision, r_size));
+	return (r_write_unsgnd(0, r, r_buffer, r_flags, r_width, r_precision, r_size));
 }
 
 /************* PRINT UNSIGNED NUMBER IN OCTAL  ****************/
@@ -43,9 +42,9 @@ int r_print_unsigned(va_list r_types, char r_buffer[],
  * @r_buffer: r_buffer array handle print
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
- * @r_precision: specification r_precision
+ * @r_precision: specification r_precision 
  * @r_size: r_size specifier
- * Return:  characters Number printed
+ * Return:  characters Number printed 
  */
 int r_print_octal(va_list r_types, char r_buffer[],
 	int r_flags, int r_width, int r_precision, int r_size)
@@ -57,7 +56,7 @@ int r_print_octal(va_list r_types, char r_buffer[],
 
 	UNUSED(r_width);
 
-	r_num = convert_size_unsgnd(r_num, r_size);
+	r_num = r_convert_size_unsgnd(r_num, r_size);
 
 	if (r_num == 0)
 		r_buffer[r--] = '0';
@@ -75,8 +74,7 @@ int r_print_octal(va_list r_types, char r_buffer[],
 
 	r++;
 
-	return (r_write_unsgnd(0, r, r_buffer,
-				r_flags, r_width, r_precision, r_size));
+	return (r_write_unsgnd(0, r, r_buffer, r_flags, r_width, r_precision, r_size));
 }
 
 /************** PRINT UNSIGNED NUMBER IN HEXADECIMAL **************/
@@ -86,9 +84,9 @@ int r_print_octal(va_list r_types, char r_buffer[],
  * @r_buffer: r_buffer array handle print
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
- * @r_precision: specification r_precision
+ * @r_precision: specification r_precision 
  * @r_size: r_size specifier
- * Return:  characters Number printed
+ * Return:  characters Number printed 
  */
 int r_print_hexadecimal(va_list r_types, char r_buffer[],
 	int r_flags, int r_width, int r_precision, int r_size)
@@ -104,9 +102,9 @@ int r_print_hexadecimal(va_list r_types, char r_buffer[],
  * @r_buffer: r_buffer array handle print
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
- * @r_precision: specification r_precision
+ * @r_precision: specification r_precision 
  * @r_size: r_size specifier
- * Return:  characters Number printed
+ * Return:  characters Number printed 
  */
 int r_print_hexa_upper(va_list r_types, char r_buffer[],
 	int r_flags, int r_width, int r_precision, int r_size)
@@ -138,7 +136,7 @@ int r_print_hexa(va_list r_types, char map_to[], char r_buffer[],
 
 	UNUSED(r_width);
 
-	r_num = convert_size_unsgnd(r_num, r_size);
+	r_num = r_convert_size_unsgnd(r_num, r_size);
 
 	if (r_num == 0)
 		r_buffer[r--] = '0';
@@ -159,11 +157,6 @@ int r_print_hexa(va_list r_types, char map_to[], char r_buffer[],
 
 	r++;
 
-	return (r_write_unsgnd(0, r, r_buffer,
-				r_flags, r_width, r_precision, r_size));
+	return (r_write_unsgnd(0, r, r_buffer, r_flags, r_width, r_precision, r_size));
 }
-
-
-
-
 

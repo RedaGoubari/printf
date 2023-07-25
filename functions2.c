@@ -8,15 +8,14 @@
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
  * @r_precision: specification r_precision
- * @r_size: specifier r_size
+ * @r_size: specifier r_size 
  * Return: characters Number printed.
  */
 int r_print_pointer(va_list r_types, char r_buffer[],
 	int r_flags, int r_width, int r_precision, int r_size)
 {
 	char r_extra_c = 0, r_padd = ' ';
-	int r_ind = BUFF_SIZE - 2,
-	    r_length = 2, r_padd_start = 1; /* r_length=2, for '0x' */
+	int r_ind = BUFF_SIZE - 2, r_length = 2, r_padd_start = 1; /* r_length=2, for '0x' */
 	unsigned long r_num_addrs;
 	char r_map_to[] = "0123456789abcdef";
 	void *r_addrs = va_arg(r_types, void *);
@@ -55,13 +54,13 @@ int r_print_pointer(va_list r_types, char r_buffer[],
 
 /************************* PRINT NON PRINTABLE *************************/
 /**
- * r_print_non_printable - Prints ascii codes in hexa of non print char
+ * r_print_non_printable - Prints ascii codes in hexa of non printable characters
  * @r_types: Lista of arguments
  * @r_buffer: r_buffer array handle print
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
  * @r_precision: specification r_precision
- * @r_size: specifier r_size
+ * @r_size: specifier r_size 
  * Return: characters Number printed
  */
 int r_print_non_printable(va_list r_types, char r_buffer[],
@@ -101,7 +100,7 @@ int r_print_non_printable(va_list r_types, char r_buffer[],
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
  * @r_precision: specification r_precision
- * @r_size: specifier r_size
+ * @r_size: specifier r_size 
  * Return: Numbers of chars printed
  */
 
@@ -144,7 +143,7 @@ int r_print_reverse(va_list r_types, char r_buffer[],
  * @r_flags:  Calculates r_flags active
  * @r_width: get r_width
  * @r_precision: specification r_precision
- * @r_size: specifier r_size
+ * @r_size: specifier r_size 
  * Return: Numbers of chars printed
  */
 int r_print_rot13string(va_list r_types, char r_buffer[],
