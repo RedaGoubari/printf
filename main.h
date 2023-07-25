@@ -7,6 +7,8 @@
 #define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
 
+
+
 /* r_flags */
 #define F_MINUS 1
 #define F_PLUS 2
@@ -14,9 +16,11 @@
 #define F_HASH 8
 #define F_SPACE 16
 
+
 /* SIZES */
 #define S_LONG 2
 #define S_SHORT 1
+
 
 /**
  * struct fmt - Struct op
@@ -31,11 +35,12 @@ struct fmt
 };
 
 
+
 /**
  * typedef struct fmt fmt_t - Struct op
  *
- * @fmt: The format.
- * @fm_t: The function associated.
+ * @fmt: format.
+ * @fm_t: associated function.
  */
 typedef struct fmt fmt_t;
 
@@ -112,6 +117,6 @@ int r_append_hexa_code(char, char[], int);
 int r_is_digit(char);
 
 long int r_convert_size_number(long int r_num, int r_size);
-long int convert_size_unsgnd(unsigned long int r_num, int r_size);
+long int r_convert_size_unsgnd(unsigned long int r_num, int r_size);
 
 #endif /* MAIN_H */
