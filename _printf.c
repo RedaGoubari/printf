@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			print_r_buffer(r_buffer,&buff_ind);
+			print_r_buffer(r_buffer, &buff_ind);
 			r_flags = r_get_flags(format, &r);
 			r_width = r_get_width(format, &r, r_list);
 			r_precision = r_get_precision(format, &r, r_list);

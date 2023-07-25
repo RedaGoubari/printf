@@ -17,8 +17,7 @@ int r_print_char(va_list r_types, char r_buffer[],
 {
 	char d = va_arg(r_types, int);
 
-	return (r_handle_write_char(d, r_buffer,
-				r_flags, r_width, r_precision, r_size));
+	return (r_handle_write_char(d, r_buffer, r_flags, r_width, r_precision, r_size));
 }
 /************************* PRINT A STRING *************************/
 /**
@@ -139,8 +138,7 @@ int r_print_int(va_list r_types, char r_buffer[],
 
 	r++;
 
-	return (r_write_number(r_is_negative, r, r_buffer,
-				r_flags, r_width, r_precision, r_size));
+	return (r_write_number(r_is_negative, r, r_buffer, r_flags, r_width, r_precision, r_size));
 }
 
 /************************* PRINT BINARY *************************/
@@ -157,7 +155,7 @@ int r_print_int(va_list r_types, char r_buffer[],
 int r_print_binary(va_list r_types, char r_buffer[],
 	int r_flags, int r_width, int r_precision, int r_size)
 {
-	unsigned int v, y, r, r_sum;
+	unsigned int n, y, r, r_sum;
 	unsigned int a[32];
 	int count;
 
@@ -167,13 +165,13 @@ int r_print_binary(va_list r_types, char r_buffer[],
 	UNUSED(r_precision);
 	UNUSED(r_size);
 
-	v = va_arg(r_types, unsigned int);
+	n = va_arg(r_types, unsigned int);
 	y = 2147483648; /* (2 ^ 31) */
-	a[0] = v / y;
+	a[0] = n / y;
 	for (r = 1; r < 32; r++)
 	{
 		y /= 2;
-		a[r] = (v / y) % 2;
+		a[r] = (n / y) % 2;
 	}
 	for (r = 0, r_sum = 0, count = 0; r < 32; r++)
 	{
