@@ -97,7 +97,7 @@ int r_write_num(int r_ind, char r_buffer[],
 {
 	int r, r_padd_start = 1;
 
-	if (r_prec == 0 && r_ind == BUFF_SIZE - 2 && r_buffer[r_ind] == '0' && r_width == 0)
+        if (r_prec == 0 && r_ind == BUFF_SIZE - 2 && r_buffer[r_ind] == '0' && r_width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
 	if (r_prec == 0 && r_ind == BUFF_SIZE - 2 && r_buffer[r_ind] == '0')
 		r_buffer[r_ind] = r_padd = ' '; /* r_width is displayed with padding ' ' */
@@ -112,24 +112,19 @@ int r_write_num(int r_ind, char r_buffer[],
 		for (r = 1; r < r_width - r_length + 1; r++)
 			r_buffer[r] = r_padd;
 		r_buffer[r] = '\0';
-		if (r_flags & F_MINUS && r_padd == ' ')
-			/* Asign extra char to left of r_buffer */
+		if (r_flags & F_MINUS && r_padd == ' ')/* Asign extra char to left of r_buffer */
 		{
 			if (extra_c)
 				r_buffer[--r_ind] = extra_c;
-			return (write(1, &r_buffer[r_ind], r_length) + write(1, &r_buffer[1],
-						r - 1));
+			return (write(1, &r_buffer[r_ind], r_length) + write(1, &r_buffer[1], r - 1));
 		}
-		else if (!(r_flags & F_MINUS) && r_padd == ' ')
-			/* extra char to left of buff */
+		else if (!(r_flags & F_MINUS) && r_padd == ' ')/* extra char to left of buff */
 		{
 			if (extra_c)
 				r_buffer[--r_ind] = extra_c;
-			return (write(1, &r_buffer[1], r - 1) + write(1, &r_buffer[r_ind],
-						r_length));
+			return (write(1, &r_buffer[1], r - 1) + write(1, &r_buffer[r_ind], r_length));
 		}
-		else if (!(r_flags & F_MINUS) && r_padd == '0')
-			/* extra char to left of r_padd */
+		else if (!(r_flags & F_MINUS) && r_padd == '0')/* extra char to left of r_padd */
 		{
 			if (extra_c)
 				r_buffer[--r_padd_start] = extra_c;
@@ -165,8 +160,7 @@ int r_write_unsgnd(int is_negative, int r_ind,
 	UNUSED(is_negative);
 	UNUSED(r_size);
 
-	if (r_precision == 0 && r_ind == BUFF_SIZE - 2 && r_buffer[r_ind]
-			== '0')
+	if (r_precision == 0 && r_ind == BUFF_SIZE - 2 && r_buffer[r_ind] == '0')
 		return (0); /* printf(".0d", 0)  no char is printed */
 
 	if (r_precision > 0 && r_precision < r_length)
@@ -188,16 +182,13 @@ int r_write_unsgnd(int is_negative, int r_ind,
 
 		r_buffer[r] = '\0';
 
-		if (r_flags & F_MINUS)
-			/* Asign extra character to left of buffer [r_buffer>r_padd]*/
+		if (r_flags & F_MINUS) /* Asign extra character to left of buffer [r_buffer>r_padd]*/
 		{
-			return (write(1, &r_buffer[r_ind], r_length) + write(1, &r_buffer[0],
-						r));
+			return (write(1, &r_buffer[r_ind], r_length) + write(1, &r_buffer[0], r));
 		}
 		else /* Asign extra character to left of padding [r_padd>r_buffer]*/
 		{
-			return (write(1, &r_buffer[0], r) + write(1, &r_buffer[r_ind],
-						r_length));
+			return (write(1, &r_buffer[0], r) + write(1, &r_buffer[r_ind], r_length));
 		}
 	}
 
@@ -227,28 +218,23 @@ int r_write_pointer(char r_buffer[], int r_ind, int r_length,
 		for (r = 3; r < r_width - r_length + 3; r++)
 			r_buffer[r] = r_padd;
 		r_buffer[r] = '\0';
-		if (r_flags & F_MINUS && r_padd == ' ')
-			/* Asign extra char to left of r_buffer */
+		if (r_flags & F_MINUS && r_padd == ' ')/* Asign extra char to left of r_buffer */
 		{
 			r_buffer[--r_ind] = 'x';
 			r_buffer[--r_ind] = '0';
 			if (extra_c)
 				r_buffer[--r_ind] = extra_c;
-			return (write(1, &r_buffer[r_ind], r_length) + write(1,
-						&r_buffer[3], r - 3));
+			return (write(1, &r_buffer[r_ind], r_length) + write(1, &r_buffer[3], r - 3));
 		}
-		else if (!(r_flags & F_MINUS) && r_padd == ' ')
-			/* extra char to left of r_buffer */
+		else if (!(r_flags & F_MINUS) && r_padd == ' ')/* extra char to left of r_buffer */
 		{
 			r_buffer[--r_ind] = 'x';
 			r_buffer[--r_ind] = '0';
 			if (extra_c)
 				r_buffer[--r_ind] = extra_c;
-			return (write(1, &r_buffer[3], r - 3) + write(1,
-						&r_buffer[r_ind], r_length));
+			return (write(1, &r_buffer[3], r - 3) + write(1, &r_buffer[r_ind], r_length));
 		}
-		else if (!(r_flags & F_MINUS) && r_padd == '0')
-			/* extra char to left of r_padd */
+		else if (!(r_flags & F_MINUS) && r_padd == '0')/* extra char to left of r_padd */
 		{
 			if (extra_c)
 				r_buffer[--r_padd_start] = extra_c;
